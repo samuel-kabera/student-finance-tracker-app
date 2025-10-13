@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Finance Tracker</title>
-</head>
-<body>
+    <link rel="stylesheet" href="styles/index.css" />
+  </head>
+  <body>
     <header>
-        <h1>Student Finance Tracker</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#dashboard">Dashboard</a>
-            <a href="#records">Records</a>
-            <a href="#create">Add Transaction</a>
-        </nav>
+      <a href="./index.html"><h1>Student Finance Tracker</h1></a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#records">Records</a>
+        <a href="#create">Add Transaction</a>
+      </nav>
     </header>
 
     <main>
-        <section id="about">
-            <h2>About</h2>
-            <p>Track your daily expenses easily. Add transactions and view your spending stats.</p>
-            <p><span>Contact:</span> GitHub: @samuel-kabera | s.kabera@alustudent.com</p>
-        </sectin>
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          Track your daily expenses easily. Add transactions and view your
+          spending stats.
+        </p>
+        <p>
+          <span>Contact:</span> GitHub: @samuel-kabera | s.kabera@alustudent.com
+        </p>
+      </section>
 
-        <section id="dashboard">
-            <div class="box total-transactions">
-                <p class="value">0</p>
-                <p>Total transactions</p>
-            </div>
+      <section id="dashboard">
+        <h2>Dashboard</h2>
 
-            
-            <div class="box total-spent">
-                <p class="value">$0.00</p>
-                <p>Total Spent</p>
-            </div>
+        <div class="boxes">
+          <div class="total-transactions">
+            <p class="value">0</p>
+            <p>Total transactions</p>
+          </div>
 
-            <div class="box top-transaction">
-                <p class="value">-</p>
-                <p>Leading Category</p>
-            </div>
+          <div class="total-spent">
+            <p class="value">$0.00</p>
+            <p>Total Spent</p>
+          </div>
 
-
-        </section>
+          <div class="top-transaction">
+            <p class="value">-</p>
+            <p>Leading Category</p>
+          </div>
+        </div>
+      </section>
     </main>
-</body>
+
+    <footer>&copy; 2025 Student Finance Tracker</footer>
+  </body>
 </html>
