@@ -22,7 +22,7 @@
         <h2>About</h2>
         <p>
           Track your daily expenses easily. Add transactions and view your
-          spending stats.
+          spending analytics.
         </p>
         <p>
           <span>Contact:</span> GitHub: @samuel-kabera | s.kabera@alustudent.com
@@ -48,6 +48,61 @@
             <p>Leading Category</p>
           </div>
         </div>
+      </section>
+
+      <section>
+        <h2>Add Transaction</h2>
+
+        <form>
+          <div>
+            <label for="description"> Description*</label>
+            <input
+              type="text"
+              id="description"
+              pattern="^\S(?:.*\S)?$"
+              title="Description must not have leading or trailing spaces. Multiple internal spaces will be collapsed."
+              required
+            />
+          </div>
+
+          <div>
+            <label for="amount">Amount($)*</label>
+            <input
+              type="text"
+              id="amount"
+              placeholder="300.50"
+              pattern="^\d+([.]\d{1,2})?$"
+              title="Amount must be a number with up to two decimal places (e.g., 100 or 100.50)."
+              required
+            />
+          </div>
+
+          <div>
+            <label for="category">Category*</label>
+            <input
+              type="text"
+              id="category"
+              placeholder="transport"
+              pattern="^[A-Za-z]+(?:[- ][A-Za-z]+)*$"
+              title="Category can only contain letters, spaces, and hyphens."
+              required
+            />
+          </div>
+
+          <div>
+            <label for="date">Date*</label>
+            <input
+              type="text"
+              id="date"
+              placeholder="2025-06-17"
+              pattern="^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$"
+              title="Date must be in YYYY-MM-DD format (e.g., 2025-06-17)."
+              required
+            />
+          </div>
+
+          <button type="submit">Add Transaction</button>
+        </form>
       </section>
     </main>
 
