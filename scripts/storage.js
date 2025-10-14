@@ -1,3 +1,12 @@
+// Object to carry global state variables
+export const globalStore = {
+  isEditing: false,
+  isSorted: false,
+  isSearchValid: false,
+  searchText: "",
+  editingIndex: -1,
+};
+
 export function storeRecord(record) {
   // adding record to localstorage
   let records = JSON.parse(localStorage.getItem("records"));

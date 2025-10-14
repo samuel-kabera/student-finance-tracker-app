@@ -1,13 +1,14 @@
 import { getRecords, renderRecords } from "./state.js";
+import { globalStore } from "./storage.js";
 import { validateSearch } from "./validation.js";
 
 // Function to search records
-function searchRecords(searchText) {
+export function searchRecords() {
   let records = getRecords();
   let results = [];
 
   // Convert search text to lowercase inorder to perform case-insensitive search
-  let searchLower = searchText.toLowerCase();
+  let searchLower = globalStore.searchText.toLowerCase();
 
   // Loop through all records
   for (let i = 0; i < records.length; i++) {
@@ -44,20 +45,21 @@ function setupSearch() {
   searchInput.parentElement.appendChild(errorMessage);
 
   searchInput.addEventListener("input", function () {
-    let searchText = searchInput.value;
+    globalStore.searchText = searchInput.value;
 
     // Hide error message
     errorMessage.style.display = "none";
 
     // If search is empty, show all records
-    if (searchText === "") {
+    if (globalStore.searchText === "") {
       // Import and call renderRecords from state.js
       window.location.reload();
       return;
     }
 
     // Validate search input
-    let validation = validateSearch(searchText);
+    let validation = validateSearch(globalStore.searchText);
+    globalStore.isSearchValid = validation.isValid;
 
     if (!validation.isValid) {
       errorMessage.textContent = validation.message;
@@ -67,7 +69,7 @@ function setupSearch() {
     }
 
     // Search and display results
-    let results = searchRecords(searchText);
+    let results = searchRecords(globalStore.searchText);
     displaySearchResults(results);
   });
 }

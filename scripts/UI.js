@@ -1,17 +1,12 @@
-import {
-  editingIndex,
-  isEditing,
-  renderRecords,
-  updateDashboard,
-  updateRecord,
-} from "./state.js";
-import { storeRecord } from "./storage.js";
+import { renderRecords, updateDashboard, updateRecord } from "./state.js";
+import { globalStore, storeRecord } from "./storage.js";
 
 const form = document.querySelector("form");
 const descriptionInput = document.querySelector("#description");
 const amountInput = document.querySelector("#amount");
 const categoryInput = document.querySelector("#category");
 const dateInput = document.querySelector("#date");
+const sortInput = document.querySelector("#records .sort input");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -24,8 +19,8 @@ form.addEventListener("submit", (e) => {
   };
 
   // Check if we're editing or adding
-  if (isEditing) {
-    updateRecord(editingIndex, newRecord);
+  if (globalStore.isEditing) {
+    updateRecord(globalStore.editingIndex, newRecord);
   } else {
     storeRecord(newRecord);
     renderRecords();
@@ -34,4 +29,9 @@ form.addEventListener("submit", (e) => {
 
   // Clear form
   form.reset();
+});
+
+sortInput.addEventListener("change", (e) => {
+  globalStore.isSorted = e.currentTarget.checked;
+  renderRecords();
 });

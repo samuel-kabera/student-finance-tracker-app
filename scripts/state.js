@@ -1,12 +1,15 @@
-// Variable to track if we're editing
-let isEditing = false;
-let editingIndex = -1;
+import { globalStore } from "./storage.js";
 
 // Function to get all records from localStorage
 function getRecords() {
   let records = localStorage.getItem("records");
+
   if (records) {
-    return JSON.parse(records);
+    const recordsArray = JSON.parse(records);
+    if (globalStore.isSorted) {
+      recordsArray.sort((a, b) => a.amount - b.amount);
+    }
+    return recordsArray;
   } else {
     return [];
   }
@@ -99,8 +102,8 @@ function editRecord(index) {
   let record = records[index];
 
   // Set editing mode
-  isEditing = true;
-  editingIndex = index;
+  globalStore.isEditing = true;
+  globalStore.editingIndex = index;
 
   // Fill the form with record data
   let descriptionInput = document.querySelector("#description");
@@ -129,8 +132,8 @@ function updateRecord(index, updatedRecord) {
   localStorage.setItem("records", JSON.stringify(records));
 
   // Reset editing mode
-  isEditing = false;
-  editingIndex = -1;
+  globalStore.isEditing = false;
+  globalStore.editingIndex = -1;
 
   // Change button text back
   let submitButton = document.querySelector("form button[type='submit']");
@@ -215,11 +218,4 @@ window.addEventListener("load", function () {
   updateDashboard();
 });
 
-export {
-  editingIndex,
-  getRecords,
-  isEditing,
-  renderRecords,
-  updateDashboard,
-  updateRecord,
-};
+export { getRecords, renderRecords, updateDashboard, updateRecord };
