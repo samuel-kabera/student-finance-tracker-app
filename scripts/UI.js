@@ -7,6 +7,12 @@ const amountInput = document.querySelector("#amount");
 const categoryInput = document.querySelector("#category");
 const dateInput = document.querySelector("#date");
 const sortInput = document.querySelector("#records .sort input");
+const searchInput = document.querySelector("#records input[type='text']");
+
+export function updateSearchInput() {
+  searchInput.value = globalStore.searchText;
+  console.log(globalStore.searchText);
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();

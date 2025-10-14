@@ -1,5 +1,6 @@
 import { filterRecordsBySearch } from "./search.js";
 import { globalStore } from "./storage.js";
+import { updateSearchInput } from "./UI.js";
 
 // Function to get all records from localStorage
 function getRecords() {
@@ -149,10 +150,24 @@ function updateRecord(index, updatedRecord) {
 // Function to delete a record
 function deleteRecord(index) {
   let records = getRecords();
-  records.splice(index, 1);
+  const recordToDelete = records[index];
+
+  // get remaining records without search filtering
+  globalStore.searchText = "";
+  records = getRecords();
+  const removableIndex = records.findIndex(
+    (record) =>
+      record.description === recordToDelete.description &&
+      record.category == recordToDelete.category &&
+      record.date == recordToDelete.date
+  );
+  records.splice(removableIndex, 1);
+
+  // update UI and local storage
   localStorage.setItem("records", JSON.stringify(records));
   renderRecords();
   updateDashboard();
+  updateSearchInput();
 }
 
 // Function to update dashboard numbers
