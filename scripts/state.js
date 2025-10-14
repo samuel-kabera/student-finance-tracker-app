@@ -62,16 +62,14 @@ function renderRecords() {
     let deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.id = "delete";
-    deleteBtn.setAttribute("record-index", i);
 
     // Add click event to delete button
     deleteBtn.addEventListener("click", function () {
-      let index = this.getAttribute("record-index");
       let confirmDelete = confirm(
         "Are you sure you want to delete this transaction?"
       );
       if (confirmDelete) {
-        deleteRecord(index);
+        deleteRecord(i);
       }
     });
 

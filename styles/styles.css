@@ -5,8 +5,14 @@
 }
 
 :root {
-  --dark-blue: #1d293d;
+  --dark-blue: #1e2939;
   --light-blue: #e5e5e5;
+  --nav-height: 60px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 20px);
 }
 
 a {
@@ -19,14 +25,20 @@ h1 {
   font-weight: 600;
 }
 
+h2,
+h3 {
+  color: #262626;
+  font-size: 1.5rem;
+}
+
 label {
   font-size: 1.1rem;
   font-weight: 600;
 }
 
 input {
-  padding: 9px 13px;
-  border: 1px solid #737373;
+  padding: 10px;
+  border: 1px solid #d4d4d4;
   border-radius: 5px;
   flex: 1 1 auto;
 }
@@ -41,37 +53,36 @@ button {
 }
 
 body {
-  background-color: #e5e5e5;
+  background-color: #f4f4f5;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-header {
-  height: 18vh;
-  background-color: var(--dark-blue);
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  padding-top: var(--nav-height);
 }
 
 nav {
+  height: var(--nav-height);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: var(--dark-blue);
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 100px;
 }
 
 nav a {
-  padding: 7px 15px;
+  padding: 10px 20px;
   font-weight: 600;
+  border: 1px solid var(--dark-blue);
 }
 
 nav a:hover {
-  border: 0.5px solid white;
+  border: 1px solid white;
   border-radius: 5px;
 }
 
@@ -88,11 +99,18 @@ main section {
   padding: 20px;
   background-color: white;
   width: 60vw;
+  min-width: 700px;
+  border-radius: 5px;
 }
 
 main section h2 {
-  color: #262626;
   margin-bottom: 20px;
+}
+
+main #about {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #dashboard .boxes {
@@ -121,7 +139,7 @@ main section h2 {
 }
 
 #records .table .header {
-  padding: 12px 10px;
+  padding: 15px 10px !important;
   background-color: var(--light-blue);
   font-weight: 600;
 }
@@ -151,7 +169,7 @@ main section h2 {
 main form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   /* approach h2 above */
   margin-top: -10px;
 }
@@ -169,7 +187,7 @@ main form button {
 }
 
 footer {
-  padding: 20px;
+  padding: 15px;
   background-color: var(--dark-blue);
   color: white;
   text-align: center;
