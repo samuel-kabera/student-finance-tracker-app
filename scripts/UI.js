@@ -1,4 +1,10 @@
-import { renderRecords, updateDashboard } from "./state.js";
+import {
+  editingIndex,
+  isEditing,
+  renderRecords,
+  updateDashboard,
+  updateRecord,
+} from "./state.js";
 import { storeRecord } from "./storage.js";
 
 const form = document.querySelector("form");
@@ -9,6 +15,7 @@ const dateInput = document.querySelector("#date");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
   const newRecord = {
     description: descriptionInput.value,
     amount: Number(amountInput.value),
@@ -16,12 +23,15 @@ form.addEventListener("submit", (e) => {
     date: dateInput.value,
   };
 
-  storeRecord(newRecord);
+  // Check if we're editing or adding
+  if (isEditing) {
+    updateRecord(editingIndex, newRecord);
+  } else {
+    storeRecord(newRecord);
+    renderRecords();
+    updateDashboard();
+  }
 
   // Clear form
   form.reset();
-
-  // Update UI
-  renderRecords();
-  updateDashboard();
 });

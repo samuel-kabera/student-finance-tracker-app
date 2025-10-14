@@ -1,3 +1,7 @@
+// Variable to track if we're editing
+let isEditing = false;
+let editingIndex = -1;
+
 // Function to get all records from localStorage
 function getRecords() {
   let records = localStorage.getItem("records");
@@ -51,7 +55,7 @@ function renderRecords() {
     amount.textContent = "$" + record.amount.toFixed(2);
     row.appendChild(amount);
 
-    // Actions (Edit and Delete buttons)
+    // Edit and Delete buttons
     let actions = document.createElement("div");
     actions.className = "actions";
 
@@ -59,11 +63,16 @@ function renderRecords() {
     editBtn.textContent = "Edit";
     editBtn.id = "edit";
 
+    // edit event
+    editBtn.addEventListener("click", function () {
+      editRecord(i);
+    });
+
     let deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.id = "delete";
 
-    // Add click event to delete button
+    // delete event
     deleteBtn.addEventListener("click", function () {
       let confirmDelete = confirm(
         "Are you sure you want to delete this transaction?"
@@ -76,9 +85,55 @@ function renderRecords() {
     actions.appendChild(editBtn);
     actions.appendChild(deleteBtn);
     row.appendChild(actions);
-
     table.appendChild(row);
   }
+}
+
+// Function to edit a record
+function editRecord(index) {
+  let records = getRecords();
+  let record = records[index];
+
+  // Set editing mode
+  isEditing = true;
+  editingIndex = index;
+
+  // Fill the form with record data
+  let descriptionInput = document.querySelector("#description");
+  let amountInput = document.querySelector("#amount");
+  let categoryInput = document.querySelector("#category");
+  let dateInput = document.querySelector("#date");
+
+  descriptionInput.value = record.description;
+  amountInput.value = record.amount;
+  categoryInput.value = record.category;
+  dateInput.value = record.date;
+
+  // Change button text
+  let submitButton = document.querySelector("form button[type='submit']");
+  submitButton.textContent = "Update Transaction";
+
+  // Scroll to form
+  let formSection = document.querySelector("form").parentElement;
+  formSection.scrollIntoView({ behavior: "smooth" });
+}
+
+// Function to update a record
+function updateRecord(index, updatedRecord) {
+  let records = getRecords();
+  records[index] = updatedRecord;
+  localStorage.setItem("records", JSON.stringify(records));
+
+  // Reset editing mode
+  isEditing = false;
+  editingIndex = -1;
+
+  // Change button text back
+  let submitButton = document.querySelector("form button[type='submit']");
+  submitButton.textContent = "Add Transaction";
+
+  renderRecords();
+  updateDashboard();
 }
 
 // Function to delete a record
@@ -156,4 +211,10 @@ window.addEventListener("load", function () {
   updateDashboard();
 });
 
-export { renderRecords, updateDashboard };
+export {
+  editingIndex,
+  isEditing,
+  renderRecords,
+  updateDashboard,
+  updateRecord,
+};
