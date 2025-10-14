@@ -24,7 +24,7 @@ label {
 }
 
 input {
-  padding: 8px 13px;
+  padding: 9px 13px;
   border: 1px solid #737373;
   border-radius: 5px;
 }
@@ -45,7 +45,7 @@ body {
 }
 
 header {
-  height: 17vh;
+  height: 18vh;
   background-color: var(--dark-blue);
   color: white;
   padding: 10px 20px;
