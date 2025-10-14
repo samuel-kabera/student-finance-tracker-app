@@ -51,14 +51,23 @@
       </section>
 
       <section id="records">
-        <h2>All transactions</h2>
-
-        <div class="records-header">
-          <input type="text" placeholder="search..." />
+        <div class="title-header">
+          <h2>All transactions</h2>
 
           <div>
             <button>Export</button>
             <button>Import</button>
+          </div>
+        </div>
+
+        <div class="filter">
+          <div class="search">
+            <input type="text" placeholder="search..." />
+          </div>
+
+          <div class="sort">
+            <p>Sort (By amount)</p>
+            <input type="checkbox" />
           </div>
         </div>
 
@@ -130,6 +139,8 @@
 
     <footer>&copy; 2025 Student Finance Tracker</footer>
 
+    <script type="module" src="./scripts/validation.js" defer></script>
+    <script type="module" src="./scripts/search.js" defer></script>
     <script type="module" src="./scripts/state.js" defer></script>
     <script type="module" src="./scripts/UI.js" defer></script>
   </body>

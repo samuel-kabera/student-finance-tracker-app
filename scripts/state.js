@@ -13,8 +13,12 @@ function getRecords() {
 }
 
 // Function to show records in the table
-function renderRecords() {
-  let records = getRecords();
+function renderRecords(records = "not given") {
+  // fetch records if not specified when calling the function
+  if (records == "not given") {
+    records = getRecords();
+  }
+
   let table = document.querySelector("#records .table");
 
   // Clear everything except the header
@@ -213,6 +217,7 @@ window.addEventListener("load", function () {
 
 export {
   editingIndex,
+  getRecords,
   isEditing,
   renderRecords,
   updateDashboard,

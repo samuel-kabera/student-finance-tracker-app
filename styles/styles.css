@@ -37,10 +37,10 @@ label {
 }
 
 input {
+  width: 100%;
   padding: 10px;
   border: 1px solid #d4d4d4;
   border-radius: 5px;
-  flex: 1 1 auto;
 }
 
 button {
@@ -131,11 +131,45 @@ main #about {
   color: #18181b;
 }
 
-.records-header {
+#records {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#records .title-header {
   display: flex;
   gap: 20px;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+}
+
+#records .title-header div {
+  display: flex;
+  gap: 10px;
+}
+
+#records .filter {
+  display: flex;
+  gap: 30px;
+  align-items: start;
+}
+
+#records .search {
+  flex: 1 1 auto;
+}
+
+#records .filter .sort {
+  font-weight: 600;
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+  transform: translateY(10px);
+}
+
+/* record item styling */
+#records h2 {
+  margin-bottom: 0px;
 }
 
 #records .table .header {
@@ -144,7 +178,6 @@ main #about {
   font-weight: 600;
 }
 
-/* record item styling */
 #records .table .record {
   display: grid;
   padding: 10px;
