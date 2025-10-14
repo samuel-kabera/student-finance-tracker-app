@@ -1,3 +1,4 @@
+import { renderRecords, updateDashboard } from "./state.js";
 import { storeRecord } from "./storage.js";
 
 const form = document.querySelector("form");
@@ -6,7 +7,6 @@ const amountInput = document.querySelector("#amount");
 const categoryInput = document.querySelector("#category");
 const dateInput = document.querySelector("#date");
 
-// console.log(descriptionInput.textContent);
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const newRecord = {
@@ -17,4 +17,11 @@ form.addEventListener("submit", (e) => {
   };
 
   storeRecord(newRecord);
+
+  // Clear form
+  form.reset();
+
+  // Update UI
+  renderRecords();
+  updateDashboard();
 });
