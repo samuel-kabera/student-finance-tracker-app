@@ -127,7 +127,7 @@ main section h2 {
 }
 
 /* record item styling */
-#records .table > * {
+#records .table .record {
   display: grid;
   padding: 10px;
   align-items: center;
