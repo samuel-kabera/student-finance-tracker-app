@@ -1,3 +1,4 @@
+import { filterRecordsBySearch } from "./search.js";
 import { globalStore } from "./storage.js";
 
 // Function to get all records from localStorage
@@ -5,10 +6,16 @@ function getRecords() {
   let records = localStorage.getItem("records");
 
   if (records) {
-    const recordsArray = JSON.parse(records);
+    let recordsArray = JSON.parse(records);
+
+    // sort records
     if (globalStore.isSorted) {
       recordsArray.sort((a, b) => a.amount - b.amount);
     }
+
+    // search records
+    recordsArray = filterRecordsBySearch(recordsArray);
+
     return recordsArray;
   } else {
     return [];
@@ -16,12 +23,8 @@ function getRecords() {
 }
 
 // Function to show records in the table
-function renderRecords(records = "not given") {
-  // fetch records if not specified when calling the function
-  if (records == "not given") {
-    records = getRecords();
-  }
-
+function renderRecords() {
+  const records = getRecords();
   let table = document.querySelector("#records .table");
 
   // Clear everything except the header

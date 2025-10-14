@@ -1,10 +1,9 @@
-import { getRecords, renderRecords } from "./state.js";
+import { renderRecords } from "./state.js";
 import { globalStore } from "./storage.js";
 import { validateSearch } from "./validation.js";
 
-// Function to search records
-export function searchRecords() {
-  let records = getRecords();
+// Function to filter records by search text
+function filterRecordsBySearch(records) {
   let results = [];
 
   // Convert search text to lowercase inorder to perform case-insensitive search
@@ -29,11 +28,6 @@ export function searchRecords() {
   return results;
 }
 
-// Function to display search results
-function displaySearchResults(results) {
-  renderRecords(results);
-}
-
 function setupSearch() {
   let searchInput = document.querySelector("#records input[type='text']");
   let errorMessage = document.createElement("p");
@@ -52,8 +46,7 @@ function setupSearch() {
 
     // If search is empty, show all records
     if (globalStore.searchText === "") {
-      // Import and call renderRecords from state.js
-      window.location.reload();
+      renderRecords();
       return;
     }
 
@@ -69,8 +62,7 @@ function setupSearch() {
     }
 
     // Search and display results
-    let results = searchRecords(globalStore.searchText);
-    displaySearchResults(results);
+    renderRecords();
   });
 }
 
@@ -79,4 +71,4 @@ window.addEventListener("load", function () {
   setupSearch();
 });
 
-export { displaySearchResults, searchRecords };
+export { filterRecordsBySearch };
