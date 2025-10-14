@@ -51,6 +51,50 @@
         </div>
       </section>
 
+      <section id="records">
+        <h2>All transactions</h2>
+
+        <div class="records-header">
+          <input type="text" placeholder="search..." />
+
+          <div>
+            <button>Export</button>
+            <button>Import</button>
+          </div>
+        </div>
+
+        <div class="table">
+          <div class="header">
+            <p>Category</p>
+            <p>Description</p>
+            <p>Amount</p>
+            <p>Actions</p>
+          </div>
+
+          <div>
+            <p>testing</p>
+            <p>Hey, there I am just testing how the applications work</p>
+            <p>$400</p>
+
+            <div class="actions">
+              <button id="edit">Edit</button>
+              <button id="delete">Delete</button>
+            </div>
+          </div>
+
+          <div>
+            <p>food</p>
+            <p>I bought fast food from kfc, I was lazy to cook my own, lol</p>
+            <p>$650</p>
+
+            <div class="actions">
+              <button id="edit">Edit</button>
+              <button id="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section>
         <h2>Add Transaction</h2>
 
@@ -83,7 +127,7 @@
             <input
               type="text"
               id="category"
-              placeholder="transport"
+              placeholder="Transport"
               pattern="^[A-Za-z]+(?:[- ][A-Za-z]+)*$"
               title="Category can only contain letters, spaces, and hyphens."
               required
