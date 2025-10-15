@@ -5,6 +5,7 @@ export const globalStore = {
   isSearchValid: false,
   searchText: "",
   editingIndex: -1,
+  currency: "usd",
 };
 
 export function storeRecord(record) {

@@ -2,6 +2,33 @@ import { filterRecordsBySearch } from "./search.js";
 import { globalStore } from "./storage.js";
 import { updateSearchInput } from "./UI.js";
 
+// Currency conversion rates (USD as base)
+const CURRENCY_RATES = {
+  usd: 1,
+  rwf: 1300, // 1 USD = 1300 RWF (approximate)
+};
+
+// Function to convert amount between currencies
+function convertCurrency(amount, fromCurrency, toCurrency) {
+  // Convert to USD first (base currency)
+  let amountInUSD = amount / CURRENCY_RATES[fromCurrency];
+
+  // Then convert to target currency
+  let convertedAmount = amountInUSD * CURRENCY_RATES[toCurrency];
+
+  return convertedAmount;
+}
+
+// Function to format currency based on type
+function formatCurrency(amount) {
+  if (globalStore.currency === "usd") {
+    return "$" + amount.toFixed(2);
+  } else if (globalStore.currency === "rwf") {
+    return "RWF " + amount.toFixed(0);
+  }
+  return "$" + amount.toFixed(2); // fallback
+}
+
 // Function to get all records from localStorage
 function getRecords() {
   let records = localStorage.getItem("records");
@@ -61,9 +88,14 @@ function renderRecords() {
     description.textContent = record.description;
     row.appendChild(description);
 
-    // Amount
+    // Amount - convert from USD to selected currency
     let amount = document.createElement("p");
-    amount.textContent = "$" + record.amount.toFixed(2);
+    let convertedAmount = convertCurrency(
+      record.amount,
+      "usd",
+      globalStore.currency
+    );
+    amount.textContent = formatCurrency(convertedAmount);
     row.appendChild(amount);
 
     // Edit and Delete buttons
@@ -181,13 +213,16 @@ function updateDashboard() {
   );
   totalTransactionsElement.textContent = totalTransactions;
 
-  // Calculate total spent
+  // Calculate total spent (in USD, then convert)
   let totalSpent = 0;
   for (let i = 0; i < records.length; i++) {
     totalSpent = totalSpent + records[i].amount;
   }
+
+  // Convert to selected currency
+  let convertedTotal = convertCurrency(totalSpent, "usd", globalStore.currency);
   let totalSpentElement = document.querySelector(".total-spent .value");
-  totalSpentElement.textContent = "$" + totalSpent.toFixed(2);
+  totalSpentElement.textContent = formatCurrency(convertedTotal);
 
   // Find leading category
   if (records.length === 0) {
@@ -230,10 +265,23 @@ function updateDashboard() {
   }
 }
 
+// Function to handle currency change
+function changeCurrency(newCurrency) {
+  globalStore.currency = newCurrency;
+  renderRecords();
+  updateDashboard();
+}
+
 // Run when page loads
 window.addEventListener("load", function () {
   renderRecords();
   updateDashboard();
 });
 
-export { getRecords, renderRecords, updateDashboard, updateRecord };
+export {
+  changeCurrency,
+  getRecords,
+  renderRecords,
+  updateDashboard,
+  updateRecord,
+};

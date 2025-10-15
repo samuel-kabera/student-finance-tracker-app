@@ -1,4 +1,9 @@
-import { renderRecords, updateDashboard, updateRecord } from "./state.js";
+import {
+  changeCurrency,
+  renderRecords,
+  updateDashboard,
+  updateRecord,
+} from "./state.js";
 import {
   exportRecords,
   globalStore,
@@ -15,6 +20,7 @@ const sortInput = document.querySelector("#records .sort input");
 const searchInput = document.querySelector("#records input[type='text']");
 const importButton = document.querySelector("#records #import");
 const exportButton = document.querySelector("#records #export");
+const currencyRadios = document.querySelectorAll("input[name='currency']");
 
 export function updateSearchInput() {
   searchInput.value = globalStore.searchText;
@@ -47,6 +53,15 @@ form.addEventListener("submit", (e) => {
 sortInput.addEventListener("change", (e) => {
   globalStore.isSorted = e.currentTarget.checked;
   renderRecords();
+});
+
+// Currency change event listeners
+currencyRadios.forEach((radio) => {
+  radio.addEventListener("change", (e) => {
+    if (e.target.checked) {
+      changeCurrency(e.target.value);
+    }
+  });
 });
 
 importButton.addEventListener("click", importRecords);

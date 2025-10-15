@@ -10,10 +10,11 @@
   <body>
     <header>
       <nav>
+        <a href="#records">All Transactions</a>
         <a href="#about">About</a>
         <a href="#dashboard">Dashboard</a>
-        <a href="#records">All Transactions</a>
         <a href="#add-transaction">Add Transaction</a>
+        <a href="#settings">Settings</a>
       </nav>
     </header>
 
@@ -108,6 +109,32 @@
 
           <button type="submit">Add Transaction</button>
         </form>
+      </section>
+
+      <section id="settings">
+        <h2>Settings</h2>
+
+        <div>
+          <h2>Choose the currency to use</h2>
+
+          <div class="currencies">
+            <div>
+              <input
+                type="radio"
+                name="currency"
+                value="usd"
+                id="usd"
+                checked
+              />
+              <label for="usd">US Dollars</label>
+            </div>
+
+            <div>
+              <input type="radio" name="currency" value="rwf" id="rwf" />
+              <label for="rwf">Rwandan francs</label>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
