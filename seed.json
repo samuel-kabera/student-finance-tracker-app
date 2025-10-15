@@ -1,0 +1,32 @@
+[
+  {
+    "description": "Bought lunch at campus cafeteria",
+    "amount": 12.5,
+    "category": "Food",
+    "date": "2025-10-10"
+  },
+  {
+    "description": "Bus fare to university",
+    "amount": 5.0,
+    "category": "Transport",
+    "date": "2025-10-11"
+  },
+  {
+    "description": "Chemistry textbook from bookstore",
+    "amount": 85.99,
+    "category": "Books",
+    "date": "2025-10-12"
+  },
+  {
+    "description": "Movie tickets with friends",
+    "amount": 15.0,
+    "category": "Entertainment",
+    "date": "2025-10-13"
+  },
+  {
+    "description": "Grocery shopping for the week",
+    "amount": 45.75,
+    "category": "Food",
+    "date": "2025-10-14"
+  }
+]
