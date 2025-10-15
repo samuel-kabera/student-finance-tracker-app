@@ -1,5 +1,10 @@
 import { renderRecords, updateDashboard, updateRecord } from "./state.js";
-import { globalStore, storeRecord } from "./storage.js";
+import {
+  exportRecords,
+  globalStore,
+  importRecords,
+  storeRecord,
+} from "./storage.js";
 
 const form = document.querySelector("form");
 const descriptionInput = document.querySelector("#description");
@@ -8,6 +13,8 @@ const categoryInput = document.querySelector("#category");
 const dateInput = document.querySelector("#date");
 const sortInput = document.querySelector("#records .sort input");
 const searchInput = document.querySelector("#records input[type='text']");
+const importButton = document.querySelector("#records #import");
+const exportButton = document.querySelector("#records #export");
 
 export function updateSearchInput() {
   searchInput.value = globalStore.searchText;
@@ -41,3 +48,6 @@ sortInput.addEventListener("change", (e) => {
   globalStore.isSorted = e.currentTarget.checked;
   renderRecords();
 });
+
+importButton.addEventListener("click", importRecords);
+exportButton.addEventListener("click", exportRecords);
