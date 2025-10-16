@@ -392,6 +392,53 @@ footer {
   #dashboard .boxes div .value {
     font-size: 1.1rem;
   }
+
+  #records .table {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  #records .table .record {
+    padding: 10px 15px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "date category"
+      "description  amount"
+      "buttons buttons";
+    gap: 0 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+  }
+
+  #records .record .description {
+    grid-area: description;
+    font-weight: 600;
+    font-size: 0.95rem !important;
+  }
+
+  #records .record .category {
+    grid-area: category;
+    color: #2b7fff;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  #records .record .amount {
+    grid-area: amount;
+    color: #e7000b;
+    text-align: right;
+  }
+
+  #records .record button {
+    margin-top: 10px !important;
+  }
+}
+
+#records .table .header {
+  display: none;
 }
 
 /* tablet and lower laptops design */
