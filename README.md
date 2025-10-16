@@ -1,5 +1,10 @@
 # Student Finance Tracker
 
+## Demo
+
+Live at: https://samuel-kabera.github.io/student-finance-tracker-app/
+Demo Video: https://youtu.be/sZAu2eLbq2A?si=mDHlrisRWk7DT5XP
+
 ## About This Project
 
 This is a school assignment project where I chose to build a **Finance Tracker App**. The app helps students track their daily expenses and manage their finances easily.
