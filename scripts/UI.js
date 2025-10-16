@@ -16,7 +16,7 @@ const descriptionInput = document.querySelector("#description");
 const amountInput = document.querySelector("#amount");
 const categoryInput = document.querySelector("#category");
 const dateInput = document.querySelector("#date");
-const sortInput = document.querySelector("#records .sort input");
+const sortFieldSelect = document.querySelector("#sortField");
 const searchInput = document.querySelector("#records input[type='text']");
 const importButton = document.querySelector("#records #import");
 const exportButton = document.querySelector("#records #export");
@@ -50,8 +50,9 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
-sortInput.addEventListener("change", (e) => {
-  globalStore.isSorted = e.currentTarget.checked;
+// Sort field dropdown event listener
+sortFieldSelect.addEventListener("change", (e) => {
+  globalStore.activeSortField = e.target.value;
   renderRecords();
 });
 

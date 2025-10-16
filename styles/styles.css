@@ -188,7 +188,7 @@ main #about {
 
 #records .record p {
   padding-left: 5px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
 #records .table > * ::first-letter {
@@ -207,6 +207,11 @@ main #about {
 
 #records .actions #delete {
   background-color: #fb2c36;
+}
+
+#records select {
+  font-size: 0.8rem;
+  padding: 2px 5px;
 }
 
 main form {

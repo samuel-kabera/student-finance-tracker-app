@@ -6,6 +6,7 @@ export const globalStore = {
   searchText: "",
   editingIndex: -1,
   currency: "usd",
+  activeSortField: "noSort",
 };
 
 export function storeRecord(record) {

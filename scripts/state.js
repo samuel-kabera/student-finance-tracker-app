@@ -36,9 +36,22 @@ function getRecords() {
   if (records) {
     let recordsArray = JSON.parse(records);
 
-    // sort records
-    if (globalStore.isSorted) {
-      recordsArray.sort((a, b) => a.amount - b.amount);
+    // sort records based on activeSortField
+    if (globalStore.activeSortField !== "noSort") {
+      recordsArray.sort((a, b) => {
+        let fieldA = a[globalStore.activeSortField];
+        let fieldB = b[globalStore.activeSortField];
+
+        // For amount, sort by numeric comparison
+        if (globalStore.activeSortField === "amount") {
+          return fieldA - fieldB;
+        }
+
+        // For date, category, description, sort by string comparison
+        if (fieldA < fieldB) return -1;
+        if (fieldA > fieldB) return 1;
+        return 0;
+      });
     }
 
     // search records
@@ -93,7 +106,7 @@ function renderRecords() {
     description.textContent = record.description;
     row.appendChild(description);
 
-    // Amount: convert from USD to selected currency
+    // Amount - convert from USD to selected currency
     let amount = document.createElement("p");
     let convertedAmount = convertCurrency(
       record.amount,
