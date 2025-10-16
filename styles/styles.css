@@ -174,7 +174,6 @@ main #about {
 }
 
 #records .table .header {
-  padding: 15px 10px !important;
   background-color: var(--light-blue);
   font-weight: 600;
 }
@@ -183,8 +182,13 @@ main #about {
   display: grid;
   padding: 10px;
   align-items: center;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1.4fr;
   border-bottom: 1px solid #d4d4d4;
+}
+
+#records .record p {
+  padding-left: 5px;
+  font-size: 0.85rem;
 }
 
 #records .table > * ::first-letter {
@@ -194,6 +198,11 @@ main #about {
 #records .table .actions {
   display: flex;
   gap: 10px;
+}
+
+#records .table .actions * {
+  padding: 8px 15px;
+  font-size: 0.7rem;
 }
 
 #records .actions #delete {

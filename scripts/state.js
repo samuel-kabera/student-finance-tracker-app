@@ -78,6 +78,11 @@ function renderRecords() {
     let row = document.createElement("div");
     row.classList.add("record");
 
+    // Date
+    let date = document.createElement("p");
+    date.textContent = record.date;
+    row.appendChild(date);
+
     // Category
     let category = document.createElement("p");
     category.textContent = record.category;
@@ -88,7 +93,7 @@ function renderRecords() {
     description.textContent = record.description;
     row.appendChild(description);
 
-    // Amount - convert from USD to selected currency
+    // Amount: convert from USD to selected currency
     let amount = document.createElement("p");
     let convertedAmount = convertCurrency(
       record.amount,
