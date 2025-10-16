@@ -29,7 +29,6 @@ const drawerLinks = document.querySelectorAll(".nav-drawer a");
 
 export function updateSearchInput() {
   searchInput.value = globalStore.searchText;
-  console.log(globalStore.searchText);
 }
 
 form.addEventListener("submit", (e) => {
