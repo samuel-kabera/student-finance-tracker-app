@@ -87,6 +87,21 @@ nav a:hover {
   border-radius: 5px;
 }
 
+/* hide hamburger menu button on desktop*/
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.nav-drawer {
+  display: none;
+}
+
 main {
   padding: 20px;
   flex: 1 1 auto;
@@ -272,4 +287,80 @@ footer {
   background-color: var(--dark-blue);
   color: white;
   text-align: center;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 10px;
+    box-shadow: 1px 1px 3px black;
+  }
+
+  /* Show hamburger button on mobile */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hide nav links by default on mobile */
+  nav > a {
+    display: none;
+  }
+
+  /* Drawer styles */
+  .nav-drawer {
+    display: block;
+    position: fixed;
+    top: var(--nav-height);
+    left: -100%;
+    width: 250px;
+    height: calc(100vh - var(--nav-height));
+    background-color: var(--dark-blue);
+    transition: left 0.3s ease;
+    z-index: 9;
+    overflow-y: auto;
+  }
+
+  /* Show drawer when active */
+  .nav-drawer.active {
+    left: 0;
+  }
+
+  /* Drawer links styling */
+  .nav-drawer a {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #ffffff1a;
+    font-weight: 600;
+  }
+
+  .nav-drawer a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    border-bottom: 1px solid #ffffff1a;
+  }
+
+  /* nav icons */
+  .nav-drawer i {
+    font-size: 1.3rem;
+  }
+
+  /* Overlay */
+  .nav-overlay {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 8;
+  }
+
+  .nav-overlay.active {
+    display: block;
+  }
 }

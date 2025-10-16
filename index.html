@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
     <link rel="icon" href="assets/icon.png" />
     <title>Student Finance Tracker</title>
     <link rel="stylesheet" href="styles/styles.css" />
@@ -10,12 +14,47 @@
   <body>
     <header>
       <nav>
-        <a href="#about">About</a>
+        <!-- Hamburger menu button -->
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
+        <!-- Desktop navigation links -->
+        <a href="#about"> About</a>
         <a href="#dashboard">Dashboard</a>
         <a href="#records">All Transactions</a>
         <a href="#add-transaction">Add Transaction</a>
         <a href="#settings">Settings</a>
       </nav>
+
+      <!-- Mobile drawer -->
+      <div class="nav-drawer" id="navDrawer">
+        <a href="#about">
+          <i class="mdi mdi-information-outline"></i>
+          <p>About</p></a
+        >
+
+        <a href="#dashboard">
+          <i class="mdi mdi-view-dashboard-outline"></i>
+          <p>Dashboard</p></a
+        >
+
+        <a href="#records">
+          <i class="mdi mdi-format-list-checkbox"></i>
+          <p>All Transactions</p></a
+        >
+
+        <a href="#add-transaction">
+          <i class="mdi mdi-playlist-plus"></i>
+          <p>Add Transaction</p></a
+        >
+
+        <a href="#settings">
+          <i class="mdi mdi-cog"></i>
+          <p>Settings</p></a
+        >
+      </div>
+
+      <!-- Overlay for mobile -->
+      <div class="nav-overlay" id="navOverlay"></div>
     </header>
 
     <main>
