@@ -255,6 +255,18 @@ main form button {
   white-space: nowrap;
 }
 
+#settings .delete-all {
+  margin-top: 20px;
+}
+
+#settings .delete-all h2 {
+  color: #e7000b;
+}
+
+#settings .delete-all button {
+  background-color: #fb2c36;
+}
+
 footer {
   padding: 15px;
   background-color: var(--dark-blue);

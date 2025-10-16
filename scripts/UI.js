@@ -21,6 +21,7 @@ const searchInput = document.querySelector("#records input[type='text']");
 const importButton = document.querySelector("#records #import");
 const exportButton = document.querySelector("#records #export");
 const currencyRadios = document.querySelectorAll("input[name='currency']");
+const deleteAllButton = document.querySelector(".delete-all button");
 
 export function updateSearchInput() {
   searchInput.value = globalStore.searchText;
@@ -63,6 +64,19 @@ currencyRadios.forEach((radio) => {
       changeCurrency(e.target.value);
     }
   });
+});
+
+deleteAllButton.addEventListener("click", () => {
+  const shouldDelete = confirm(
+    "This action will delete all stored transaction. It can't be undone"
+  );
+
+  if (shouldDelete) {
+    // clear localstorage
+    localStorage.clear();
+    renderRecords();
+    updateDashboard();
+  }
 });
 
 importButton.addEventListener("click", importRecords);

@@ -92,8 +92,6 @@ export function importRecords() {
         let mergedRecords = currentRecords.concat(importedRecords);
         localStorage.setItem("records", JSON.stringify(mergedRecords));
 
-        alert("Records imported successfully!");
-
         // Reload page to show new records
         window.location.reload();
       } catch (error) {
