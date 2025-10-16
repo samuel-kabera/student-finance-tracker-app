@@ -20,11 +20,6 @@ a {
   text-decoration: none;
 }
 
-h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
 h2,
 h3 {
   color: #262626;
@@ -60,6 +55,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding-top: var(--nav-height);
+  overflow-x: hidden;
 }
 
 nav {
@@ -93,7 +89,7 @@ nav a:hover {
   background: none;
   border: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
   padding: 10px;
 }
@@ -115,7 +111,6 @@ main section {
   padding: 20px;
   background-color: white;
   width: 60vw;
-  min-width: 700px;
   border-radius: 5px;
 }
 
@@ -140,11 +135,14 @@ main #about {
   background-color: var(--light-blue);
   color: #737373;
   text-align: center;
+  border-radius: 5px;
 }
 
 #dashboard .boxes div .value {
   font-size: 1.5rem;
-  color: #18181b;
+  font-weight: 700;
+  color: #1e2939;
+  margin-bottom: 5px;
 }
 
 #records {
@@ -291,6 +289,10 @@ footer {
 
 /* Mobile styles */
 @media (max-width: 768px) {
+  body {
+    font-size: 0.9rem;
+  }
+
   nav {
     padding: 0 10px;
     box-shadow: 1px 1px 3px black;
@@ -362,5 +364,43 @@ footer {
 
   .nav-overlay.active {
     display: block;
+  }
+
+  main section {
+    width: 90vw !important;
+    /* max-width: 95vw; */
+  }
+
+  h2,
+  h3 {
+    color: #262626;
+    font-size: 1.3rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  #dashboard .boxes {
+    gap: 10px;
+  }
+
+  #dashboard .boxes div {
+    padding: 20px 0;
+  }
+
+  #dashboard .boxes div .value {
+    font-size: 1.1rem;
+  }
+}
+
+/* tablet and lower laptops design */
+@media (min-width: 768px) and (max-width: 1080px) {
+  nav {
+    padding: 0 20px;
+  }
+
+  main section {
+    min-width: 700px;
   }
 }
